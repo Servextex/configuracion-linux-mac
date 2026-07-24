@@ -1,0 +1,1 @@
+ACTION=="add", SUBSYSTEM=="pci", DRIVER=="amdgpu", RUN+="/bin/sh -c 'chgrp video /sys/class/drm/card*/device/power_dpm_force_performance_level; chmod g+w /sys/class/drm/card*/device/power_dpm_force_performance_level'"

@@ -1,0 +1,13 @@
+[Unit]
+Description=Curva de ventilador para Macmini8,1 (T2) - evita throttling a 100C
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/macmini-fan.py
+Restart=always
+RestartSec=2
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

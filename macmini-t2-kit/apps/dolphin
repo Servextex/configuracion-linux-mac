@@ -1,0 +1,6 @@
+#!/bin/sh
+# Puente: Dolphin -> Nautilus. (Borrar este archivo para revertir.)
+target=""
+for arg in "$@"; do case "$arg" in -*) ;; file://*) target="${arg#file://}";; *) target="$arg";; esac; done
+if [ -n "$target" ]; then [ -f "$target" ] && target=$(dirname "$target"); exec nautilus -- "$target"; fi
+exec nautilus

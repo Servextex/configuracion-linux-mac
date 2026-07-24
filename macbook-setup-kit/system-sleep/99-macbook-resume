@@ -1,0 +1,9 @@
+#!/bin/sh
+# Reasienta el brillo del panel (AUX/DPCD) al despertar de suspensión.
+# El fd de /dev/drm_dp_aux0 puede quedar viejo tras resume -> reiniciar el daemon.
+case "$1/$2" in
+  post/*)
+    systemctl restart amdgpu-backlight.service 2>/dev/null || true
+    ;;
+esac
+exit 0

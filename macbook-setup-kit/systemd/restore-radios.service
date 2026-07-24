@@ -1,0 +1,17 @@
+[Unit]
+Description=Encender WiFi y Bluetooth al arrancar (contrarresta el apagado por tapa cerrada)
+# El handler de tapa apaga WiFi/BT al cerrar y trata de reactivarlos 2s antes del poweroff,
+# pero systemd-rfkill no siempre alcanza a persistir ese "ON" antes del apagado (carrera).
+# Esto lo hace determinista: en CADA arranque se desbloquean y se encienden.
+After=NetworkManager.service bluetooth.service
+Wants=NetworkManager.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/rfkill unblock all
+ExecStart=-/usr/bin/nmcli radio wifi on
+ExecStart=-/usr/bin/bluetoothctl power on
+
+[Install]
+WantedBy=multi-user.target

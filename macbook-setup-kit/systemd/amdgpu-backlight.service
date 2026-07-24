@@ -1,0 +1,14 @@
+[Unit]
+Description=Brillo unificado MacBookPro13,3: auto-curva (ALS) + panel AUX/DPCD
+After=multi-user.target
+Wants=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/amdgpu-backlight.py
+Restart=always
+RestartSec=2
+Nice=10
+
+[Install]
+WantedBy=multi-user.target

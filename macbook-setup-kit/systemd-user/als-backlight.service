@@ -1,0 +1,12 @@
+[Unit]
+Description=Auto-brillo de pantalla por sensor de luz (ALS -> gmux_backlight, silencioso)
+After=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/als-backlight.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=default.target
