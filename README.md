@@ -19,6 +19,35 @@ Todo el stack es el mismo en ambas máquinas:
 
 ---
 
+## 🤖 Recomendado: hazlo con un agente de IA (mucho más rápido)
+
+**Toda esta configuración y documentación se hizo con la ayuda de un agente de IA corriendo
+localmente en la propia máquina.** Es la forma más rápida y menos tediosa de replicarlo: el
+agente diagnostica el hardware, ejecuta los comandos, edita los archivos de configuración y
+va documentando cada paso por ti — en vez de que tú copies y pegues decenas de comandos a mano.
+
+### Cómo se arrancó (ejemplo)
+
+1. **Instalar un primer agente de IA** para tener asistencia desde el inicio. Aquí se empezó
+   con **[Antigravity](https://antigravity.google/)** (el editor con agente de Google).
+2. **Desde ese agente, instalar el agente principal:** se usó Antigravity para instalar
+   **[Claude Code](https://www.claude.com/product/claude-code)**, que fue el que ejecutó la
+   mayor parte del trabajo (diagnóstico, comandos, edición de configs y esta documentación).
+3. A partir de ahí, se le va pidiendo al agente cada tarea de estas guías y él la ejecuta.
+
+> El agente concreto es **a tu gusto** — Claude Code, otro CLI, la extensión que prefieras.
+> Lo importante es que corra **localmente** en el equipo que estás configurando, para que
+> pueda ejecutar comandos y tocar archivos directamente.
+
+### ¿Prefieres hacerlo manualmente?
+
+Se puede, todos los runbooks tienen los comandos exactos. Pero **ten en cuenta que a mano
+toma bastante más tiempo y es más tedioso** (diagnosticar, buscar cada comando, editar cada
+config, verificar). Con un agente local el mismo proceso se hace mucho más rápido y con menos
+errores.
+
+---
+
 ## 📁 Estructura del repositorio
 
 ```
