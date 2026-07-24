@@ -39,6 +39,33 @@ va documentando cada paso por ti — en vez de que tú copies y pegues decenas d
 > Lo importante es que corra **localmente** en el equipo que estás configurando, para que
 > pueda ejecutar comandos y tocar archivos directamente.
 
+### Dale acceso total al agente MIENTRAS dura la configuración
+
+Para que el proceso no sea tedioso, lo ideal es **darle acceso total al agente de forma
+temporal** durante la configuración, para que **no pida confirmación en cada paso**. Si tienes
+que aprobar cada comando uno por uno, el proceso se vuelve lentísimo. Dos ajustes ayudan:
+
+1. **Que el agente no pida confirmación.** Actívale su modo de permisos amplios / "saltar
+   confirmaciones" (en Claude Code, por ejemplo, su modo sin prompts de permisos). Así ejecuta
+   los comandos de las guías sin detenerse a preguntar cada vez.
+
+2. **Quitar la clave de `sudo` temporalmente.** Para que el agente pueda ejecutar comandos con
+   privilegios sin trabarse pidiendo contraseña a cada rato:
+   ```bash
+   # Reemplaza tu-usuario por tu usuario real ($USER)
+   echo 'tu-usuario ALL=(ALL) NOPASSWD: ALL' | sudo tee /etc/sudoers.d/99-setup-nopasswd
+   sudo chmod 440 /etc/sudoers.d/99-setup-nopasswd
+   ```
+
+> 🔒 **IMPORTANTE — revertir al terminar.** Estos dos ajustes **bajan la seguridad** del equipo
+> y son **solo para la fase de configuración**. En cuanto termines, **vuelve a exigir la clave de
+> `sudo`** eliminando el archivo:
+> ```bash
+> sudo rm /etc/sudoers.d/99-setup-nopasswd
+> ```
+> Y desactiva el modo "sin confirmaciones" del agente. No dejes la máquina de uso diario con
+> `sudo` sin contraseña ni con un agente con acceso total permanente.
+
 ### ¿Prefieres hacerlo manualmente?
 
 Se puede, todos los runbooks tienen los comandos exactos. Pero **ten en cuenta que a mano
